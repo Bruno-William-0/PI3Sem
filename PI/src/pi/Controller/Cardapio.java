@@ -6,7 +6,8 @@ package pi.Controller;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pi.TelaLanche;
+import pi.View.TelaLanche;
+
 /**
  *
  * @author Bruno WIlliam
@@ -15,6 +16,7 @@ public class Cardapio {
     
     public String lanche(TelaLanche tela)
     {
+        int i = 1;
         String descricao = "";
         try {
             String sql = "Select * from produto where tipo='lanche'";
@@ -24,11 +26,12 @@ public class Cardapio {
             rs = ps.executeQuery();
             while(rs.next())
             {
-             //descricao = String.valueOf(rs.getInt("cod_produto"))+ "" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
-             tela.setJlabel1(rs.getString("nome"));
-             tela.setJlabel2(rs.getString("descricao"));
-             tela.setJlabel3(rs.getString("preco"));
+             descricao = String.valueOf(rs.getInt("cod_produto"))+ "" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
+             tela.setJlabel(i, "<html>" + rs.getString("nome") + "<br>" + rs.getString("descricao") + "<br>" + "R$" + rs.getString("preco"));
+             i++;   
             }
+            
+            
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);

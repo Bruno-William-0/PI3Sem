@@ -5,6 +5,7 @@
 package pi;
 
 import pi.Controller.Cardapio;
+import pi.View.Interface;
 
 /**
  *
@@ -15,7 +16,11 @@ public class PI {
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String[] args)
+    {
+     Interface inter = new Interface();   
+     inter.tela();  
+    }
     
 }
 
