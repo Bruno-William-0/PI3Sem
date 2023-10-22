@@ -6,7 +6,8 @@ package pi.Controller;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pi.View.TelaLanche;
+import pi.View.TelaCardapio;
+
 
 /**
  *
@@ -14,7 +15,7 @@ import pi.View.TelaLanche;
  */
 public class Cardapio {
     
-    public String lanche(TelaLanche tela)
+    public String lanche(TelaCardapio tela)
     {
         int i = 1;
         String descricao = "";
@@ -40,10 +41,10 @@ public class Cardapio {
        return null;
     }
     
-      public String bebida()
+      public String bebida(TelaCardapio tela)
     {
-        
-        try {
+         int i = 6;
+       try {
             String sql = "Select * from produto where tipo='bebida'";
             PreparedStatement ps = null;
             ResultSet rs = null;
@@ -51,8 +52,11 @@ public class Cardapio {
             rs = ps.executeQuery();
             while(rs.next())
             {
-             System.out.println(String.valueOf(rs.getInt("cod_produto"))+" " +rs.getString("nome")+" "+String.valueOf(rs.getDouble("preco"))+" "+rs.getString("descricao")); 
+             tela.setJlabel(i, "<html>" + rs.getString("nome") + "<br>" + rs.getString("descricao") + "<br>" + "R$" + rs.getString("preco"));
+             i++;   
             }
+            
+            
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,10 +66,10 @@ public class Cardapio {
     }
 
     
-    public String acompanhamento()
+    public String acompanhamento(TelaCardapio tela)
     {
-        
-        try {
+         int i = 10;
+       try {
             String sql = "Select * from produto where tipo='acompanhamento'";
             PreparedStatement ps = null;
             ResultSet rs = null;
@@ -73,8 +77,11 @@ public class Cardapio {
             rs = ps.executeQuery();
             while(rs.next())
             {
-             return String.valueOf(rs.getInt("cod_produto"))+" " +rs.getString("nome")+" "+String.valueOf(rs.getDouble("preco"))+" "+rs.getString("descricao"); 
+             tela.setJlabel(i, "<html>" + rs.getString("nome") + "<br>" + rs.getString("descricao") + "<br>" + "R$" + rs.getString("preco"));
+             i++;   
             }
+            
+            
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
