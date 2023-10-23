@@ -1,0 +1,17 @@
+		////Produtos
+		//Lanches
+insert into produto values(1, 'x-burguer', 10.50, 'Pão, queijo, presunto, alface e hamburguer', 'lanche');
+insert into produto values(2, 'x-tudo', 15.50, 'Pão, queijo, presunto, hamburguer, bacon, ovo e molho especial', 'lanche');
+insert into produto values(3, 'x-vegano', 100.50, 'Pão, alface, carne de jaca, molho especial com ingredientes 100% veganos para clientes frescos e chatos', 'lanche');
+insert into produto values(4, 'x-bacon', 12.25, 'Pão, queijo, presunto, alface, hamburguer e bacon', 'lanche');
+insert into produto values(5, 'x-calabresa', 12.25, 'Pão, queijo, presunto, alface, hamburguer e calabresa', 'lanche');
+
+		//Bebidas
+insert into produto values(6, 'Tota-Tola', 5.00, 'Refrigerante sabor cola', 'bebida');
+insert into produto values(7, 'Strike', 5.00, 'Refrigerante sabor limão', 'bebida');
+insert into produto values(8, 'Fanka', 5.00, 'Refrigerante sabor laranja', 'bebida);
+insert into produto values(9, 'Water' 2.50, 'Refrigerante sabor h20', 'bebida');
+		//Acompanhamento
+insert into produto values(10, 'Batata Frita', 7.25, 'Batata frita', 'acompanhamento');
+insert into produto values(11, 'Onion Rings', 8.25, 'Cebola empanada foda-se', 'acompanhamento');
+insert into produto values(12, 'Nuggets', 8,25, 'Resto de galinha empanado e frito', 'acompanhamento');

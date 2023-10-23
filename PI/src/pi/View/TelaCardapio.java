@@ -13,6 +13,7 @@ import pi.Controller.Cardapio;
  */
 public class TelaCardapio extends javax.swing.JFrame {
 int y = 10;
+int num = 0; ///////////////////
 JLabel jlabellanches = new JLabel();
         
     /**
@@ -692,13 +693,16 @@ JLabel jlabellanches = new JLabel();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-    
-        jlabellanches.setText("SALVE");
+    	
+
+    	num++;
+        jlabellanches.setText("SALVE" + " x " + num);
         jlabellanches.setBounds(10, y, 100, 100);
         y = y+10;
         jPanel2.add(jlabellanches);
-        jPanel2.revalidate();
+        //jPanel2.revalidate();
         jPanel2.repaint();
+        //*/
       
     }//GEN-LAST:event_jButton3ActionPerformed
 
