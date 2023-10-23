@@ -27,7 +27,7 @@ public class Cardapio {
             rs = ps.executeQuery();
             while(rs.next())
             {
-             descricao = String.valueOf(rs.getInt("cod_produto"))+ "" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
+             descricao = String.valueOf(rs.getInt("cod_produto"))+ ";" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
              tela.setJlabel(i, "<html>" + rs.getString("nome") + "<br>" + rs.getString("descricao") + "<br>" + "R$" + rs.getString("preco"));
              i++;   
             }

@@ -38,7 +38,7 @@ public class PI {
         
     }
    
-       /* 
+       
        while (true) {
             System.out.println("Digite uma palavra ou 'remover' para remover uma palavra:");
             String entrada = scanner.nextLine();
@@ -68,11 +68,11 @@ public class PI {
             }
         }
     }
-    */
+    
     }
        
        
 
 
-}
+
 
