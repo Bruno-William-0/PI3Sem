@@ -20,25 +20,51 @@ public class PI {
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String[] args)
     {
+    /*O seguinte script tem como função adicionar um pedido que sera contabilizado 
+     a partir da quantidade de palavras iguais que existe, o objetivo é que ao pedir para
+     remover um lanche, ele remove a ultima vez que o nome de lanche for encontrado, então
+        caso a palavra exista 10x no mesmo array, ele apagara a decima vez que a palavra aparecer*/
+        
+    //Criando um array list para o "carrinho" dos pedidos
     ArrayList<String> palavras = new ArrayList<String>();
+    //Instãncia da classe scanner para poder testar a remoção de pedidos
     Scanner scanner = new Scanner(System.in);
-     
-    palavras.add( "Primeiro elemento");
-    palavras.add("Segundo elemento");
-    palavras.add("Terceiro elemento");
-    palavras.add("Primeiro elemento");
     
-    int n = palavras.size();
-    for(int i=0; i<n; i++)   
+    String linha;
+    
+    
+    //Adicionando palavras
+    palavras.add( "<html> Primeiro elemento <br>");
+    palavras.add("Segundo elemento<br>");
+    palavras.add("Terceiro elemento<br>");
+    palavras.add("Primeiro elemento</html>");
+    
+    
+    //preparando laço de repetição
+    int n = palavras.size(); //aqui pegamos quantas palavras existem ao todo no array
+    int apagar = 0;
+    for(int i=0; i<n; i++)  //aqui fazemos um laço que passa por todo o array
     {
-        
-         System.out.println(palavras.indexOf("Primeiro elemento"));   
-        
+        if(palavras.get(i).equals("Primeiro elemento"))
+        {
+         //aqui vai a condição de remoção, preciso preparar ela ainda
+         System.out.println(palavras.get(i));
+         apagar = i;
+        }
     }
+    
+    palavras.remove(apagar);
+    
+    System.out.println(palavras);
+    
    
-       
+    
+    //Tentativa falha
+       /* 
        while (true) {
             System.out.println("Digite uma palavra ou 'remover' para remover uma palavra:");
             String entrada = scanner.nextLine();
@@ -68,11 +94,11 @@ public class PI {
             }
         }
     }
-    
+    */
     }
        
        
 
 
-
+}
 

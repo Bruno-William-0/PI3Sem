@@ -15,7 +15,7 @@ import pi.View.TelaCardapio;
  */
 public class Cardapio {
     
-    public String lanche(TelaCardapio tela)
+    public boolean lanche(TelaCardapio tela)
     {
         int i = 1;
         String descricao = "";
@@ -27,7 +27,7 @@ public class Cardapio {
             rs = ps.executeQuery();
             while(rs.next())
             {
-             descricao = String.valueOf(rs.getInt("cod_produto"))+ ";" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
+             descricao = String.valueOf(rs.getInt("cod_produto"))+ "" + rs.getString("nome")+";"+String.valueOf(rs.getDouble("preco"))+";"+rs.getString("descricao");
              tela.setJlabel(i, "<html>" + rs.getString("nome") + "<br>" + rs.getString("descricao") + "<br>" + "R$" + rs.getString("preco"));
              i++;   
             }
@@ -36,12 +36,13 @@ public class Cardapio {
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         
-       return null;
+       return true;
     }
     
-      public String bebida(TelaCardapio tela)
+      public boolean bebida(TelaCardapio tela)
     {
          int i = 6;
        try {
@@ -60,13 +61,14 @@ public class Cardapio {
              ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         
-       return null;
+       return true;
     }
 
     
-    public String acompanhamento(TelaCardapio tela)
+    public boolean acompanhamento(TelaCardapio tela)
     {
          int i = 10;
        try {
@@ -84,10 +86,11 @@ public class Cardapio {
             
              ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex); 
+            return false;
         }
         
-       return null;
+       return true;
     }
     
     
