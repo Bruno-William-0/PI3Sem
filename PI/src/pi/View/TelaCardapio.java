@@ -809,12 +809,20 @@ JLabel jlabellanches = new JLabel();
     }// </editor-fold>//GEN-END:initComponents
 
     
+    /**
+     * Aciona o evento do botão
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         MontaPainelPedido painel = new MontaPainelPedido();
         painel.adicionarValor(this, "X-Burguer");
     }//GEN-LAST:event_jButton3ActionPerformed
 
+       /**
+     * Aciona o evento do botão
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
@@ -833,72 +841,119 @@ JLabel jlabellanches = new JLabel();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+       /**
+     * Aciona o evento do botão finalizar pedido, envia os itens para o metodo contabilizaritens
+     * @param evt 
+     */
+    
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
         MontaPainelPedido painel = new MontaPainelPedido();
         painel.contabilizarItens(this);
     }//GEN-LAST:event_FinalizarActionPerformed
 
+       /**
+     * Aciona o evento do botão excluir
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "Hamburguer");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+       /**
+     * Aciona o evento do botão adicionar
+     * @param evt 
+     */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "X-Vegano");
     }//GEN-LAST:event_jButton7ActionPerformed
 
+       /**
+     * Aciona o evento do botão excluir
+     * @param evt 
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.adicionarValor(this, "X-Vegano");
     }//GEN-LAST:event_jButton6ActionPerformed
 
+       /**
+     * Aciona o evento do botão adicionar
+     * @param evt 
+     */
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "X-Bacon");
     }//GEN-LAST:event_jButton9ActionPerformed
 
+       /**
+     * Aciona o evento do botão
+     * @param evt 
+     */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.adicionarValor(this, "X-Bacon");
     }//GEN-LAST:event_jButton8ActionPerformed
 
+       /**
+     * Aciona o evento do botão excluir
+     * @param evt 
+     */
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "X-Calabresa");
     }//GEN-LAST:event_jButton11ActionPerformed
 
+       /**
+     * Aciona o evento do botão adicionar
+     * @param evt 
+     */
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.adicionarValor(this, "X-Calabresa");
     }//GEN-LAST:event_jButton10ActionPerformed
 
+       /**
+     * Aciona o evento do botão adicionar
+     * @param evt 
+     */
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.adicionarValor(this, "Tota-Tola");
     }//GEN-LAST:event_jButton12ActionPerformed
 
+       /**
+     * Aciona o evento do botão excluir
+     * @param evt 
+     */
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "Tota-Tola");
     }//GEN-LAST:event_jButton13ActionPerformed
 
+       /**
+     * Aciona o evento do botão excluir
+     * @param evt 
+     */
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
         painel.excluirValor(this, "Strike");
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    
+    
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
           MontaPainelPedido painel = new MontaPainelPedido();
@@ -1001,11 +1056,20 @@ JLabel jlabellanches = new JLabel();
         });
     }
     
+    /**
+     * pega o valor da label itens
+     * @return - retorna o valor da label
+     */
      public String getLabel()
         {   
           return labelitens.getText();
         }
     
+     /**
+      * seta um valor para as label
+      * @param indice - recebe um indice para ser usado no switch
+      * @param texto  - recebe o texto a ser usar
+      */
     public void setJlabel(int indice, String texto)
     {
         switch(indice)

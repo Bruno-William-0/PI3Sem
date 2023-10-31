@@ -15,6 +15,11 @@ public class Conexao {
     
     private static Connection conn;
     
+    
+    /**
+     * A conexão é realizada de acordo com as variáveis da classe
+     * @return retorna a conexão 
+     */
     public static Connection getConexao()
     {
         try{

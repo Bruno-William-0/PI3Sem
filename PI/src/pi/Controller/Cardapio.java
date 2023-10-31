@@ -15,6 +15,11 @@ import pi.View.TelaCardapio;
  */
 public class Cardapio {
     
+    /**
+     * Listagem dos produtos do tipo lanche e retorna um valor verdadeiro caso o sucesso e falso caso fracasso
+     * @param tela - referência do objeto
+     * @return -  retorno verdadeiro ou falso 
+     */
     public boolean lanche(TelaCardapio tela)
     {
         int i = 1;
@@ -42,6 +47,12 @@ public class Cardapio {
        return true;
     }
     
+    
+    /**
+     * Listagem dos produtos do tipo bebida e retorna um valor verdadeiro caso o sucesso e falso caso fracasso
+     * @param tela - referência do objeto
+     * @return -  retorno verdadeiro ou falso 
+     */
       public boolean bebida(TelaCardapio tela)
     {
          int i = 6;
@@ -68,6 +79,11 @@ public class Cardapio {
     }
 
     
+    /**
+     * Listagem dos produtos do tipo acompanhamento e retorna um valor verdadeiro caso o sucesso e falso caso fracasso
+     * @param tela - referência do objeto
+     * @return -  retorno verdadeiro ou falso  
+     */ 
     public boolean acompanhamento(TelaCardapio tela)
     {
          int i = 10;

@@ -13,10 +13,15 @@ import java.util.logging.Logger;
  * @author Bruno WIlliam
  */
 public class Pedido {
+    
+    /**
+     * 
+     * @return - caso verdadeiro, query realizda com sucesso, caso falso, query fracassada 
+     */
     public boolean fazerPedido()
     {
         try {
-            String sql = "Insert into pedido values()";
+            String sql = "Insert into pedido values()"; //definir query corretamente
             PreparedStatement ps = null;
             ResultSet rs = null;
             ps = Conexao.getConexao().prepareStatement(sql);
@@ -28,10 +33,16 @@ public class Pedido {
         return true;
     }
     
+    /**
+     * 
+     * Lista todos os pedidos que estão sendo feitos ou prontos
+     * @return - caso verdadeiro, query realizda com sucesso, caso falso, query fracassada 
+     * 
+     */
     public boolean listarPedidos()
     {
         try {
-            String sql = "Select * from pedido where";
+            String sql = "Select * from pedido where";  //definir consulta
             PreparedStatement ps = null;
             ResultSet rs = null;
             ps = Conexao.getConexao().prepareStatement(sql);
@@ -43,10 +54,17 @@ public class Pedido {
         return true;
     }
     
-    public boolean fecharPedido()
+    
+    /**
+     * Solicita o código e status de um pedido para atualizar seu status na tela
+     * @param codigo - recebe o número do pedido
+     * @param status - recebe o status do pedido
+     * @return - caso verdadeiro, query realizda com sucesso, caso falso, query fracassada 
+     */
+    public boolean atualizarStatusPedido(int codigo, String status)
     {  
         try {
-            String sql = "Select * from pedido where";
+            String sql = "update pedido set status="; //defirnir query corretamente
             PreparedStatement ps = null;
             ResultSet rs = null;
             ps = Conexao.getConexao().prepareStatement(sql);
