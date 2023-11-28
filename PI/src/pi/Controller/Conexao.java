@@ -9,9 +9,14 @@ import java.sql.*;
  * @author Bruno WIlliam
  */
 public class Conexao {
+  /*  
     private static final String url = "jdbc:postgresql://kesavan.db.elephantsql.com/wluhqrnx";
     private static final String user = "wluhqrnx";
     private static final String pass = "vulNbtDhjc-SVqibvTMv1CX4dL7Tj3bs";
+    */
+      private static final String url = "jdbc:postgresql://localhost/postgres";
+    private static final String user = "postgres";
+    private static final String pass = "toor";
     
     private static Connection conn;
     

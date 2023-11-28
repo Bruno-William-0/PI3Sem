@@ -6,14 +6,18 @@ package pi.Controller;
 
 import java.util.ArrayList;
 import pi.View.TelaCardapio;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import pi.View.TelaCardapio;
 /**
  *
  * @author Bruno WIlliam
  */
 public class MontaPainelPedido {
+  
 
+    
     /**
      * Recebe um referência e uma label e adiciona um valor a label
      *
@@ -31,19 +35,20 @@ public class MontaPainelPedido {
         }
 
         //bloco para incluir item  
-        if (arraylabel.size() == 1) {
+        
             arraylabel.add(adicionar + "<br> ");
-        } else {
-            arraylabel.add(adicionar + "<br> ");
-        }
+        
+            
 
         //Convertendo array para string   
         String retorno = String.join(" ", arraylabel);
-
         System.out.println(retorno);
         System.out.println(arraylabel);
         tela.setJlabel(13, retorno);
-
+        System.out.println( tela.getPreco().replace("Preço R$:", "").trim());
+        System.out.println(consultarPreco(adicionar));
+        System.out.println(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) + consultarPreco(adicionar));
+        tela.setJlabel(14, "Preço R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) + consultarPreco(adicionar)));
     }
 
     /**
@@ -72,15 +77,22 @@ public class MontaPainelPedido {
             if (arraylabel.get(i).equals(excluir + "<br>")) {
                 //aqui vai a condição de remoção, preciso preparar ela ainda
                 apagar = i;
-
+                System.out.println("Seu id é" + apagar);
+                System.out.println(arraylabel);
             }
-            arraylabel.remove(apagar);
+            
 
         }
-
+        
+        if(arraylabel.get(apagar).equals(excluir + "<br>"))
+        {
+        arraylabel.remove(apagar);
+        
+        
         String retorno = String.join(" ", arraylabel);
 
         tela.setJlabel(13, retorno);
+        tela.setJlabel(14, "Preço R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) - consultarPreco(excluir)));}
     }
 
     /**
@@ -88,40 +100,140 @@ public class MontaPainelPedido {
      *
      * @param tela - referência de um objeto
      */
-    public void contabilizarItens(TelaCardapio tela) {
+    public void contabilizarItens(String label,  int cod) {
+        
         //Converte String para array
-        String label = tela.getLabel();
+        
         String[] array = label.split(" ");
         ArrayList<String> arraylabel = new ArrayList<>();
         for (String item : array) {
             arraylabel.add(item);
-        }
-        System.out.println(array);
-        int n = arraylabel.size();
-        String item;
-        int i;
-        //laço deve se repetir de acordo com o tamanho do array
-         // Crie um mapa para armazenar as contagens de letras
-         /*
-        Map<, Integer> contagemLetras = new HashMap<>();
+         }
+        
+        // Remover a substring "<br>" de cada elemento
+        for (int i = 0; i < arraylabel.size(); i++) {
+          if(i==0)
+          {
+              arraylabel.remove(i);
+          }
+          arraylabel.set(i, arraylabel.get(i).replace("<br>", ""));      
+          System.out.println("A formatação atual é" + arraylabel);
+    }
+        
+        
+        
 
-        // Itere pelo array de letras
-        for (char letra : letras) {
-            // Verifique se a letra já está no mapa
-            if (contagemLetras.containsKey(letra)) {
-                // Se estiver, incremente o contador
-                contagemLetras.put(letra, contagemLetras.get(letra) + 1);
-            } else {
-                // Se não estiver, adicione a letra ao mapa com contagem 1
-                contagemLetras.put(letra, 1);
+        
+      //Preparando segundo array para contabilizar os itens e fazer query de pedido e quantidade  
+      ArrayList<String> conta = new ArrayList();
+       for (String comidas : arraylabel) {
+            boolean encontrou = false;  
+            for (String elemento : conta) {
+                if (comidas.equals(elemento)) {
+                    encontrou = true;
+                    System.out.println(comidas + "É igual a" + elemento + "?");
+                }
             }
-        }
 
-        // Itere pelo mapa e mostre as contagens de cada letra
-        for (Map.Entry<Character, Integer> entrada : contagemLetras.entrySet()) {
-            System.out.println("Letra " + entrada.getKey() + ": " + entrada.getValue() + " ocorrência(s)");
+            if (!encontrou) {
+                conta.add(comidas);
+                System.out.println("O valor que está sendo salvo no array de comparação é:" + comidas);
+                System.out.println("O valor total do array de comparação é" + conta);
+            }
+       }
+            //Adiciona os itens no pedido
+            
+            int qtd = 0;
+            int ccod = 0;
+            for(int i=0; i<conta.size(); i++)
+            { 
+             System.out.println("Começando o laço com" + arraylabel + " E " + conta);
+             for(String pedido: arraylabel)   
+             {
+                if(conta.get(i).equals(pedido))
+                {
+                 qtd = qtd + 1;   
+                }
+             }
+              System.out.println("A quantidade atual de "+ conta.get(i) +" é igual a:" + qtd);
+              consultarCodigo(conta.get(i), qtd, cod);
+              System.out.println("Fim do laço" + i);
+              qtd = 0;
+            }   
+             
+            
+            
+            
+            
+            
         }
-*/  
+        
+    
+    public static void consultarCodigo(String nome, int qtd, int cod)
+    {
+        int cpro;
+        try {
+                     String sql = String.format("Select * from produto where nome='%s'", nome); //definir query corretamente
+                     System.out.println(sql);
+                     PreparedStatement ps = null;         
+                     ResultSet rs = null;
+                     ps = Conexao.getConexao().prepareStatement(sql);   
+                     rs = ps.executeQuery();
+                     if(rs.next())
+                     {
+                        cpro = rs.getInt("cod_produto");   
+                        System.out.println("Resultado do cod igual a" + rs.getInt("cod_produto"));
+                     }
+                     else
+                     {
+                     sql = String.format("Select * from combo where nome='%s'", nome); //definir query corretamente
+                     ps = Conexao.getConexao().prepareStatement(sql);   
+                     rs = ps.executeQuery();
+                     cpro = rs.getInt("cod_combo");
+                     System.out.println("Resultado do cod igual a" + rs.getInt("cod_combo"));
+                     }
+                     sql = String.format("Insert into tem_pedido values(%i, %i, %i)", cpro, cod, qtd);
+                     System.out.println(sql);
+                     ps = Conexao.getConexao().prepareStatement(sql);   
+                     ps.executeUpdate();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(MontaPainelPedido.class.getName()).log(Level.SEVERE, null, ex);
+                 } 
+    }
+                
+    public static Double consultarPreco(String nome)
+    {
+        double preco = 0;
+        try {
+            String sql = String.format("Select preco from produto where nome='%s'", nome); //definir query corretamente
+            System.out.println(sql);
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            ps = Conexao.getConexao().prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next())
+            {
+             preco = rs.getDouble("preco");   
+            }
+            else
+            {
+            sql = String.format("Select preco from combo where nome='%s'", nome); //definir query corretamente
+            System.out.println(sql);
+            ps = null;
+            rs = null;
+            ps = Conexao.getConexao().prepareStatement(sql);
+            rs = ps.executeQuery();
+            preco = rs.getDouble("preco");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MontaPainelPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return preco;
+    }
+       
+       
+       
+       
     }
 
-}
+      
