@@ -45,10 +45,10 @@ public class MontaPainelPedido {
         System.out.println(retorno);
         System.out.println(arraylabel);
         tela.setJlabel(13, retorno);
-        System.out.println( tela.getPreco().replace("Preço R$:", "").trim());
+        System.out.println( tela.getPreco().replace("Total R$:", "").trim());
         System.out.println(consultarPreco(adicionar));
-        System.out.println(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) + consultarPreco(adicionar));
-        tela.setJlabel(14, "Preço R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) + consultarPreco(adicionar)));
+        System.out.println(Double.parseDouble(tela.getPreco().replace("Total R$:", "").trim()) + consultarPreco(adicionar));
+        tela.setJlabel(14, "Total R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Total R$:", "").trim()) + consultarPreco(adicionar)));
     }
 
     /**
@@ -92,7 +92,7 @@ public class MontaPainelPedido {
         String retorno = String.join(" ", arraylabel);
 
         tela.setJlabel(13, retorno);
-        tela.setJlabel(14, "Preço R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Preço R$:", "").trim()) - consultarPreco(excluir)));}
+        tela.setJlabel(14, "Total R$: " + Double.toString(Double.parseDouble(tela.getPreco().replace("Total R$:", "").trim()) - consultarPreco(excluir)));}
     }
 
     /**
@@ -192,7 +192,7 @@ public class MontaPainelPedido {
                      cpro = rs.getInt("cod_combo");
                      System.out.println("Resultado do cod igual a" + rs.getInt("cod_combo"));
                      }
-                     sql = String.format("Insert into tem_pedido values(%i, %i, %i)", cpro, cod, qtd);
+                     sql = String.format("Insert into tem_pedido values(%d, %d, %d)", cpro, cod, qtd);
                      System.out.println(sql);
                      ps = Conexao.getConexao().prepareStatement(sql);   
                      ps.executeUpdate();

@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import pi.Controller.MontaPainelPedido;
 import javax.swing.*;
-import pi.Controller.Produto;
+import pi.Controller.ProdutoController;
 import pi.Controller.*;
 import pi.Controller.PedidoController;
 import pi.Model.Pedido;
@@ -731,10 +731,10 @@ JLabel jlabellanches = new JLabel();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1034,14 +1034,14 @@ JLabel jlabellanches = new JLabel();
         // TODO add your handling code here:
                   MontaPainelPedido painel = new MontaPainelPedido();
 
-        painel.adicionarValor(this, "Batata Frita");
+        painel.adicionarValor(this, "Batata-Frita");
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
                   MontaPainelPedido painel = new MontaPainelPedido();
 
-        painel.adicionarValor(this, "Batata Frita");
+        painel.adicionarValor(this, "Batata-Frita");
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
@@ -1062,14 +1062,14 @@ JLabel jlabellanches = new JLabel();
         // TODO add your handling code here:
                   MontaPainelPedido painel = new MontaPainelPedido();
 
-        painel.excluirValor(this, "Onion Rings");
+        painel.excluirValor(this, "Onion-Rings");
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
                   MontaPainelPedido painel = new MontaPainelPedido();
 
-        painel.adicionarValor(this, "Onion Rings");
+        painel.adicionarValor(this, "Onion-Rings");
     }//GEN-LAST:event_jButton25ActionPerformed
 
     /**
