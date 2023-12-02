@@ -1,0 +1,395 @@
+O documento tem criação de tabelas e inserção de dados manuais no banco de dados, o sistema proverá a maior parte das informações necessários no banco porém para está atividade, fizemos as inserções manualmente. 
+ 
+  
+
+CREATE TABLE Produto ( 
+
+    cod_produto serial PRIMARY KEY NOT NULL, 
+
+    Nome varchar(30) NOT NULL, 
+
+    preco money NOT NULL, 
+
+    descricao varchar(100) NOT NULL, 
+
+    tipo varchar(30) NOT NULL 
+
+); 
+
+  
+
+CREATE TABLE Combo ( 
+
+    cod_combo serial PRIMARY KEY NOT NULL, 
+
+    nome varchar(30) NOT NULL, 
+
+    preco float NOT NULL 
+
+); 
+
+  
+
+CREATE TABLE Pedido ( 
+
+    cod_pedido serial PRIMARY KEY NOT NULL, 
+
+    Nome_cliente varchar(30) NOT NULL, 
+
+    Status varchar(15) NOT NULL 
+
+); 
+
+  
+
+CREATE TABLE Tem_combo ( 
+
+    fk_cod_doproduto int NOT NULL, 
+
+    fk_cod_docombo int NOT NULL 
+
+); 
+
+  
+
+CREATE TABLE Possui ( 
+
+    fk_cod_pedido int NOT NULL, 
+
+    fk_cod_combo int NOT NULL, 
+
+    quantidade int NOT NULL 
+
+); 
+
+  
+
+CREATE TABLE tem_pedido ( 
+
+    fk_Produto_cod_produto int NOT NULL, 
+
+    fk_Pedido_cod_pedido int NOT NULL, 
+
+    Quantidade int NOT NULL 
+
+); 
+
+ 	 
+
+ALTER TABLE Tem_combo ADD CONSTRAINT FK_Tem_combo_1 
+
+    FOREIGN KEY (fk_cod_doproduto) 
+
+    REFERENCES Produto (cod_produto) 
+
+    ON DELETE RESTRICT; 
+
+  
+
+ALTER TABLE Tem_combo ADD CONSTRAINT FK_Tem_combo_2 
+
+    FOREIGN KEY (fk_cod_docombo) 
+
+    REFERENCES Combo (cod_combo) 
+
+    ON DELETE SET NULL; 
+
+  
+
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1 
+
+    FOREIGN KEY (fk_cod_pedido) 
+
+    REFERENCES Pedido (cod_pedido) 
+
+    ON DELETE SET NULL; 
+
+  
+
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2 
+
+    FOREIGN KEY (fk_cod_combo) 
+
+    REFERENCES Combo (cod_combo) 
+
+    ON DELETE SET NULL; 
+
+  
+
+ALTER TABLE tem_pedido ADD CONSTRAINT FK_tem_pedido_1 
+
+    FOREIGN KEY (fk_Produto_cod_produto) 
+
+    REFERENCES Produto (cod_produto) 
+
+    ON DELETE RESTRICT; 
+
+  
+
+ALTER TABLE tem_pedido ADD CONSTRAINT FK_tem_pedido_2 
+
+    FOREIGN KEY (fk_Pedido_cod_pedido) 
+
+    REFERENCES Pedido (cod_pedido) 
+
+    ON DELETE SET NULL; 
+ 
+/* Adicionando produtos */  
+ 
+insert into produto values(1, 'X-Burguer', 10.50, 'Pão, queijo, presunto, alface e hamburguer', 'lanche'); 
+
+insert into produto values(2, 'X-Tudo', 15.50, 'Pão, queijo, presunto, hamburguer, bacon, ovo e molho especial', 'lanche'); 
+
+insert into produto values(3, 'X-Vegano', 100.50, 'Pão, alface, carne de jaca, molho especial com ingredientes 100% veganos', 'lanche'); 
+
+insert into produto values(4, 'X-Bacon', 12.25, 'Pão, queijo, presunto, alface, hamburguer e bacon', 'lanche'); 
+
+insert into produto values(5, 'X-Calabresa', 12.25, 'Pão, queijo, presunto, alface, hamburguer e calabresa', 'lanche'); 
+
+insert into produto values(6, 'Tota-Tola', 5.00, 'Refrigerante sabor cola', 'bebida'); 
+
+insert into produto values(7, 'Strike', 5.00, 'Refrigerante sabor limão', 'bebida'); 
+
+insert into produto values(8, 'Fanka', 5.00, 'Refrigerante sabor laranja', 'bebida'); 
+
+insert into produto values(9, 'Water', 2.50, 'Refrigerante sabor h20', 'bebida'); 
+
+insert into produto values(10, 'Batata-Frita', 7.25, 'Batata frita', 'acompanhamento'); 
+
+insert into produto values(11, 'Onion-Rings', 8.25, 'Cebola empanada', 'acompanhamento'); 
+
+insert into produto values(12, 'Nuggets', 10.50, 'Nuggets', 'acompanhamento'); 
+ 
+ 
+/* Adicionando combos */ 
+ 
+insert into combo values (1, 'Combo hamburgão', 30.52); 
+
+insert into combo values (2, 'Combo completo', 35.55); 
+
+insert into combo values (3, 'Combo vegano', 100.53); 
+
+insert into combo values (4, 'Combo bacon',  30.52); 
+
+insert into combo values (5, 'Combo calabresa', 30.52); 
+
+insert into combo values (6, 'Cala fritas', 30.52); 
+
+insert into combo values (7, 'Cala Nuggets', 30.52); 
+
+insert into combo values (8, 'Baconfritos', 30.52); 
+
+insert into combo values (9, 'BaconRings', 30.90); 
+
+insert into combo values (10, 'HamburRings', 30.90); 
+ 
+/* Adicionando relação combo com itens que eles possuem */  
+ 
+insert into tem_combo values(1, 1); 
+
+insert into tem_combo values(6, 1); 
+
+insert into tem_combo values(10, 1); 
+
+insert into tem_combo values(2, 2); 
+
+insert into tem_combo values(6, 2); 
+
+insert into tem_combo values(10, 2); 
+
+insert into tem_combo values(3, 3); 
+
+insert into tem_combo values(9, 3); 
+
+insert into tem_combo values(10, 3); 
+
+insert into tem_combo values(4, 4); 
+
+insert into tem_combo values(6, 4); 
+
+insert into tem_combo values(12, 4); 
+
+insert into tem_combo values(5, 5); 
+
+insert into tem_combo values(6, 5); 
+
+insert into tem_combo values(11, 5); 
+
+insert into tem_combo values(5, 6); 
+
+insert into tem_combo values(6, 6); 
+
+insert into tem_combo values(10, 6); 
+
+insert into tem_combo values(5, 6); 
+
+insert into tem_combo values(6, 6); 
+
+insert into tem_combo values(12, 6); 
+
+insert into tem_combo values(4, 7); 
+
+insert into tem_combo values(6, 7); 
+
+insert into tem_combo values(10, 7); 
+
+insert into tem_combo values(4, 8); 
+
+insert into tem_combo values(6, 8); 
+
+insert into tem_combo values(10, 8); 
+
+insert into tem_combo values(4, 9); 
+
+insert into tem_combo values(6, 9); 
+
+insert into tem_combo values(11, 9); 
+
+insert into tem_combo values(1, 10); 
+
+insert into tem_combo values(6, 10); 
+
+insert into tem_combo values(11, 10); 
+ 
+/* Adicionando pedidos */ 
+ 
+
+insert into pedido values(1, 'Rogério', 'Cancelado');  
+
+insert into pedido values(2, 'Paulo', 'Entregue');  
+
+insert into pedido values(3, 'Leticia', 'Entregue');  
+
+insert into pedido values(4, 'João Paulo', 'Entregue');  
+
+insert into pedido values(5, 'Lucas', 'Entregue');  
+
+insert into pedido values(6, 'Frederico', 'Pronto');  
+
+insert into pedido values(7, 'Magali', 'Em preparo');  
+
+insert into pedido values(8, 'Leticia', 'Aguardando');  
+
+insert into pedido values(9, 'Otávio', 'Aguardando');  
+
+insert into pedido values(10, 'Carlos', 'Aguardando');  
+
+insert into pedido values(11, 'Sergio', 'Aguardando');  
+
+insert into pedido values(12, 'Lucas', 'Aguardando'); 
+
+insert into pedido values(13, 'Guloso', 'Aguardando'); 
+
+  
+
+/*inserts de todos os pedidos para apenas um cliente (13) */ 
+
+insert into tem_pedido values(1, 13, 1); 
+
+insert into tem_pedido values(2, 13, 2); 
+
+insert into tem_pedido values(3, 13, 1); 
+
+insert into tem_pedido values(4, 13, 4); 
+
+insert into tem_pedido values(5, 13, 3); 
+
+insert into tem_pedido values(6, 13, 2); 
+
+insert into tem_pedido values(7, 13, 5); 
+
+insert into tem_pedido values(8, 13, 1); 
+
+insert into tem_pedido values(9, 13, 2); 
+
+insert into tem_pedido values(10, 13, 2); 
+
+insert into tem_pedido values(11, 13, 3); 
+
+insert into tem_pedido values(12, 13, 1); 
+
+////////////////// 
+
+ 
+insert into pedido values(1, 1); 
+
+insert into pedido values(2, 2); 
+
+insert into pedido values(3, 3); 
+
+insert into pedido values(4, 4); 
+
+insert into pedido values(5, 5); 
+
+insert into pedido values(6, 6); 
+
+insert into pedido values(7, 7); 
+
+insert into pedido values(8, 8); 
+
+insert into pedido values(9, 9); 
+
+insert into pedido values(10, 10); 
+insert into pedido values(11, 1); 
+
+insert into pedido values(12, 2); 
+
+insert into pedido values(13, 3); 
+
+insert into pedido values(14, 4); 
+
+insert into pedido values(15, 5); 
+
+insert into pedido values(16, 6); 
+
+insert into pedido values(17, 7); 
+
+insert into pedido values(18, 8); 
+
+insert into pedido values(19, 9); 
+
+insert into pedido values(20, 10); 
+
+  
+/* Adicionando relação de oque tem nos pedidos e a quantidade */ 
+
+insert into possui values  (1, 1, 2); 
+
+insert into possui values  (2, 1, 1); 
+
+insert into possui values (3, 3, 1); 
+
+insert into possui values (4, 5, 1); 
+
+insert into possui values (5, 5, 2); 
+
+insert into possui values (6, 1, 1); 
+
+insert into possui values (7, 9, 1); 
+
+insert into possui values (8, 9, 1); 
+
+insert into possui values(9, 9, 1); 
+
+insert into possui values(10, 10, 1); 
+insert into tem_pedido values(1, 11, 1); 
+
+insert into tem_pedido values(2, 12, 1); 
+
+insert into tem_pedido values(3, 13, 1); 
+
+insert into tem_pedido values(4, 14, 1); 
+
+insert into tem_pedido values(5, 15, 1); 
+
+insert into tem_pedido values(6, 16, 1); 
+
+insert into tem_pedido values(7, 17, 1); 
+
+insert into tem_pedido values(8, 18, 1); 
+
+insert into tem_pedido values(9, 19, 1); 
+
+insert into tem_pedido values(10, 20, 1); 
+ 
+ 
