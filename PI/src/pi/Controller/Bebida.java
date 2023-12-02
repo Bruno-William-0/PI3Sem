@@ -6,9 +6,9 @@ package pi.Controller;
 
 /**
  *
- * @author Bruno
+ * @author Guilherme
  */
-public class Bebida extends Produto{
+public class Bebida extends ProdutoController{
     public static void executandoBebida()
     {
      System.out.println("Executando bebida!");

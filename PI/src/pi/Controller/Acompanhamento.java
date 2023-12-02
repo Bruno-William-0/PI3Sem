@@ -6,9 +6,9 @@ package pi.Controller;
 
 /**
  *
- * @author Bruno
+ * @author Guilherme
  */
-public class Acompanhamento extends Produto{
+public class Acompanhamento extends ProdutoController{
     
      public static void execuçãoLanche()
     {

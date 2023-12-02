@@ -14,7 +14,7 @@ import pi.View.TelaCardapio;
 
 /**
  *
- * @author Bruno WIlliam
+ * @author Bruno
  */
 public class PedidoController extends Pedido{
     
@@ -82,7 +82,7 @@ public class PedidoController extends Pedido{
     {
         List <String> pedido = new ArrayList<>();
         try {
-            String sql = "Select * from pedido"; //definir consulta
+            String sql = "SELECT * FROM pedido ORDER BY cod_pedido ASC"; //definir consulta
             PreparedStatement ps = null;
             ResultSet rs = null;
             ps = Conexao.getConexao().prepareStatement(sql);
