@@ -196,6 +196,8 @@ public class MontaPainelPedido {
                      System.out.println(sql);
                      ps = Conexao.getConexao().prepareStatement(sql);   
                      ps.executeUpdate();
+            ps.close();
+            rs.close();
                  } catch (SQLException ex) {
                      Logger.getLogger(MontaPainelPedido.class.getName()).log(Level.SEVERE, null, ex);
                  } 
@@ -211,6 +213,8 @@ public class MontaPainelPedido {
             ResultSet rs = null;
             ps = Conexao.getConexao().prepareStatement(sql);
             rs = ps.executeQuery();
+         ps.close();
+            rs.close();
             if(rs.next())
             {
              preco = rs.getDouble("preco");   
@@ -224,6 +228,8 @@ public class MontaPainelPedido {
             ps = Conexao.getConexao().prepareStatement(sql);
             rs = ps.executeQuery();
             preco = rs.getDouble("preco");
+            ps.close();
+            rs.close();
             }
         } catch (SQLException ex) {
             Logger.getLogger(MontaPainelPedido.class.getName()).log(Level.SEVERE, null, ex);
